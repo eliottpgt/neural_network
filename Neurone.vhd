@@ -8,7 +8,7 @@ entity Neurone is
 	Generic ( Wi : Tab_int_const := (others => 27));
 	Port (
 		Xi : in Tab_int_const;
-		Z : out short_natural
+		Z : out natural
     	);
 
 end Neurone;
@@ -16,7 +16,7 @@ end Neurone;
 architecture behaviour of Neurone is
 begin
 	process(Xi)
-		variable Y : long_natural := 0;
+		variable Y : natural := 0;
 	begin
 		Y := 0;
 		for i in Xi'range loop
