@@ -1,9 +1,15 @@
-# Script .do pour la simulation du Noeud (node_tb)
+# Modelsim simulation script for two neurons with different weights
+# Compares behavior of two neurons fed with the same inputs
 
-# 1. Lancement de la simulation
+# 1. Compile source files
+vcom pack_neurone_N4.vhd
+vcom Neurone_N4.vhd
+vcom Neurone2_tb.vhd
+
+# 2. Start simulation
 vsim work.Neurone2_tb
 
-configure wave -namecolwidth 120
+configure wave -namecolwidth 150
 configure wave -valuecolwidth 50
 configure wave -justifyvalue left
 configure wave -signalnamewidth 1
@@ -17,17 +23,19 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 
-# 2. Configuration et ouverture de la fenêtre de chronogramme (Wave)
-# Ajoute tous les signaux de l'architecture 'tb_architecture' dans la fenêtre 'wave'
-add wave -divider "Entrees"
+# 3. Configure waveform window
+add wave -divider "Common Inputs"
 add wave /Neurone2_tb/Xi_tb
 
-# Ajoute les signaux de sortie
-add wave -divider "Sorties"
+add wave -divider "Neuron 1 (Arbitrary weights: 18,32,21,45)"
+add wave /Neurone2_tb/NEURONE1_TEST/Y
 add wave /Neurone2_tb/Z1_tb
+
+add wave -divider "Neuron 2 (Arbitrary weights: 35,20,40,15)"
+add wave /Neurone2_tb/NEURONE2_TEST/Y
 add wave /Neurone2_tb/Z2_tb
 
-# 3. Lancement de la simulation
-# Exécute la simulation jusqu'à 300 ns pour couvrir tous les stimuli
-run 300 ns
-wave zoom range 0ns 300ns
+# 4. Run simulation
+# Total time: 1 + 6*20 = 121 ns
+run 121 ns
+wave zoom range 0ns 121ns

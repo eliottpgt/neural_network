@@ -1,7 +1,12 @@
-# Script .do pour la simulation du Noeud (node_tb)
+# Script .do pour la simulation du Neurone avec N=8
 
-# 1. Lancement de la simulation
-vsim work.Neurone_tb
+# 1. Compilation des fichiers
+vcom pack_neurone_N8.vhd
+vcom Neurone_N8.vhd
+vcom Neurone_N8_tb.vhd
+
+# 2. Lancement de la simulation
+vsim work.Neurone_N8_tb
 
 configure wave -namecolwidth 120
 configure wave -valuecolwidth 50
@@ -17,16 +22,20 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 
-# 2. Configuration et ouverture de la fenêtre de chronogramme (Wave)
+# 3. Configuration et ouverture de la fenêtre de chronogramme (Wave)
 # Ajoute tous les signaux de l'architecture 'tb_architecture' dans la fenêtre 'wave'
 add wave -divider "Entrees"
-add wave /Neurone_tb/Xi_tb
+add wave /Neurone_N8_tb/Xi_tb
+
+# Ajoute les signaux internes
+add wave -divider "Internes"
+add wave /Neurone_N8_tb/NEURONE_TEST/Y
 
 # Ajoute les signaux de sortie
 add wave -divider "Sorties"
-add wave /Neurone_tb/Z_tb
+add wave /Neurone_N8_tb/Z_tb
 
-# 3. Lancement de la simulation
-# Exécute la simulation jusqu'à 300 ns pour couvrir tous les stimuli
-run 300 ns
-wave zoom range 0ns 300ns
+# 4. Lancement de la simulation
+# Exécute la simulation jusqu'à 100 ns pour couvrir tous les stimuli
+run 100 ns
+wave zoom range 0ns 100ns
