@@ -1,3 +1,4 @@
-*.png binary    # Forces images PNG en mode binaire strict
-*.bmp binary    # Forces images BMP en mode binaire strict
-*.qar binary    # Forces archives Quartus en mode binaire strict
+# Binary files
+*.png binary
+*.bmp binary
+*.qar binary
