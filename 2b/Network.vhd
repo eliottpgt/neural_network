@@ -23,7 +23,7 @@ architecture Structural of Network is
 	end component;
 
 	type pipe_matrix is array(0 to Nb_Layers) of Tab_int_const;
-	signal pipe : pipe_matrix;
+	signal pipe : pipe_matrix := (others => (others => 0));
 
 begin
 
