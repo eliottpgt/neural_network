@@ -2,15 +2,15 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.pack_neurones.all; 
 
-ENTITY Test_network_NbLayers_3 is
+ENTITY Test_network_NbLayers_1 is
    
-END Test_network_NbLayers_3;
+END Test_network_NbLayers_1;
 
 
-ARCHITECTURE arch_test OF Test_network_NbLayers_3 IS
+ARCHITECTURE arch_test OF Test_network_NbLayers_1 IS
 
 SIGNAL Vect_X_in : Tab_int_const := (others => 0);
-SIGNAL Vect_Z_out : Tab_int (1 to 2);
+SIGNAL Vect_Z_out : Tab_int (1 to 4);
 
 COMPONENT Network is
     GENERIC (Nb_Layers :positive := 1);
